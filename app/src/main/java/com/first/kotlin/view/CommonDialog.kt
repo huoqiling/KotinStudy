@@ -26,6 +26,9 @@ class CommonDialog : BaseDialogFragment() {
 
     private var title: String? = ""
     private var message: String? = ""
+    private var confirmText: String? = ""
+    private var cancelText = ""
+
     private var dialogListener: CommonDialogListener? = null
 
 
@@ -36,6 +39,16 @@ class CommonDialog : BaseDialogFragment() {
 
     fun setMessage(message: String): CommonDialog {
         this.message = message
+        return this
+    }
+
+    fun setConfirmText(confirmText: String): CommonDialog {
+        this.confirmText = confirmText
+        return this
+    }
+
+    fun setCancelText(cancelText: String): CommonDialog {
+        this.cancelText = cancelText
         return this
     }
 
@@ -66,6 +79,9 @@ class CommonDialog : BaseDialogFragment() {
     fun onclick(view: View) {
         when (view.id) {
             R.id.btnCancel -> {
+                if (dialogListener != null) {
+                    dialogListener!!.onCancel()
+                }
                 dismiss()
             }
             R.id.btnConfirm -> {
@@ -79,6 +95,7 @@ class CommonDialog : BaseDialogFragment() {
 
     interface CommonDialogListener {
         fun onConfirm()
+        fun onCancel()
     }
 
 }

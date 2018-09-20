@@ -39,7 +39,7 @@ class KotlinMainActivity : BaseActivity(), CustomTitleBar.TitleBarListener {
         initAdapter()
         getGlobalParam()
         appLoginAgain()
-        LogUtil().i("token=="+token)
+        LogUtil().i("token==" + token)
     }
 
 
@@ -132,6 +132,10 @@ class KotlinMainActivity : BaseActivity(), CustomTitleBar.TitleBarListener {
                 }
 
             })
+        }
+
+        override fun onCancel() {
+
         }
 
     }

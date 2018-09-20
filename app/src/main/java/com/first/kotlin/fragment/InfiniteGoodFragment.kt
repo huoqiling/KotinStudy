@@ -2,6 +2,8 @@ package com.first.kotlin.fragment
 
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.View
+import android.widget.TextView
 import butterknife.BindView
 import com.first.kotlin.MyApp
 import com.first.kotlin.R
@@ -32,6 +34,9 @@ class InfiniteGoodFragment : BaseLazyFragment() {
 
     @BindView(R.id.refreshLayout)
     lateinit var refreshLayout: BaseRefreshLayout
+
+    @BindView(R.id.tvEmpty)
+    lateinit var tvEmpty: TextView
 
     override fun getLayoutResId(): Int {
         return R.layout.fragment_infinite_goods
@@ -76,17 +81,24 @@ class InfiniteGoodFragment : BaseLazyFragment() {
 
         Requester().merchantQueryProductList(queryType, pageIndex, pageSize, object : Requester.RetrofitResponseListener<MerchantQueryProductList> {
             override fun isSuccessful(response: Response<MerchantQueryProductList>?) {
-                dismissDialog()
                 try {
-                    refreshLayout.onFinishRefresh()
+                    dismissDialog()
                     val productListInfo = response!!.body()
                     if (productListInfo!!.isSuccessful()) {
                         if (refreshType == 2) {
+                            refreshLayout.finishLoadmore()
                             updateData(productListInfo.data!!.infiniteSaleProductList, true)
                         } else {
+                            refreshLayout.finishRefreshing()
                             updateData(productListInfo.data!!.infiniteSaleProductList, false)
                         }
                     } else {
+                        if(refreshType == 2){
+                            refreshLayout.finishLoadmore()
+                        }else{
+                            refreshLayout.finishRefreshing()
+                        }
+                        showEmptyView()
                         showToast(productListInfo.msg)
                     }
                 } catch (e: Exception) {
@@ -94,8 +106,17 @@ class InfiniteGoodFragment : BaseLazyFragment() {
             }
 
             override fun isFailed() {
-                refreshLayout.onFinishRefresh()
-                showToast("请求失败")
+                try {
+                    if(refreshType == 2){
+                        refreshLayout.finishLoadmore()
+                    }else{
+                        refreshLayout.finishRefreshing()
+                    }
+                    dismissDialog()
+                    showEmptyView()
+                    showToast("请求失败")
+                } catch (e: Exception) {
+                }
             }
 
         })
@@ -111,13 +132,23 @@ class InfiniteGoodFragment : BaseLazyFragment() {
             }
         } else {
             if (isAdd) {
-                productAdapter!!.data.addAll(productList)
+                productAdapter!!.addData(productList)
             } else {
+                productAdapter!!.data.clear()
                 productAdapter!!.setNewData(productList)
             }
         }
         productAdapter!!.notifyDataSetChanged()
+        showEmptyView()
 
+    }
+
+    private fun showEmptyView() {
+        if (productAdapter!!.data.size > 0) {
+            tvEmpty.visibility = View.GONE
+        } else {
+            tvEmpty.visibility = View.VISIBLE
+        }
     }
 
 

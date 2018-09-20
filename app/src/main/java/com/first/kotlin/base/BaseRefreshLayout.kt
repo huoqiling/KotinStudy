@@ -22,6 +22,7 @@ class BaseRefreshLayout : TwinklingRefreshLayout {
         setHeaderView(progressLayout)
         isFocusableInTouchMode = true
         isFocusable = true
+        setFloatRefresh(true)
     }
 
 

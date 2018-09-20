@@ -1,6 +1,7 @@
 package com.first.kotlin.net
 
 import android.text.TextUtils
+import com.first.kotlin.MyApp
 import com.first.kotlin.bean.BaseEntity
 import com.first.kotlin.bean.GlobalParamInfo
 import com.first.kotlin.bean.MerchantQueryProductList
@@ -13,6 +14,12 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache
+import com.franmontiel.persistentcookiejar.PersistentCookieJar
+import com.franmontiel.persistentcookiejar.ClearableCookieJar
+import com.google.gson.GsonBuilder
+
 
 /**
  * 请求的主类
@@ -24,11 +31,13 @@ class Requester {
 
         private fun <T> getService(baseUrl: String, service: Class<T>): T {
 
+
+            val cookieJar = PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(MyApp.instance.applicationContext))
+
             val client = OkHttpClient.Builder()
                     //自定义拦截器用于日志输出
                     .addInterceptor(LogInterceptor())
-                    .addInterceptor(ReceivedCookiesInterceptor())
-                    .addInterceptor(AddCookiesInterceptor())
+                    .cookieJar(cookieJar)
                     .readTimeout(15, TimeUnit.SECONDS)
                     .connectTimeout(15, TimeUnit.SECONDS)
                     .build()
@@ -36,7 +45,7 @@ class Requester {
             val retrofit = Retrofit.Builder()
                     .baseUrl(baseUrl)
                     //格式转换
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
                     //正常的retrofit返回的是call，此方法用于将call转化成Rxjava的Observable或其他类型
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .client(client)

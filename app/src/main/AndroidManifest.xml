@@ -3,6 +3,8 @@
     package="com.first.kotlin">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".MyApp"
@@ -40,7 +42,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity android:name=".activity.InfiniteGoodsActivity" />
-        <activity android:name=".activity.KotlinMainActivity"></activity>
+        <activity android:name=".activity.KotlinMainActivity"/>
     </application>
 
 </manifest>

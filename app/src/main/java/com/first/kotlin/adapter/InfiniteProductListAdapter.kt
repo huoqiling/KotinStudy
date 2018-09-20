@@ -23,12 +23,20 @@ class InfiniteProductListAdapter : BaseQuickAdapter<MerchantQueryProductList.Inf
         helper!!.setText(R.id.tvStartTime, getTime(itemData!!.createAt))
         helper.setText(R.id.tvOrderStatus, getOrderStatus(itemData.status))
         helper.setText(R.id.tvProductName, itemData.productName)
-        helper.setText(R.id.tvCurrentPrice,itemData.nowBidPrice+" π")
+        helper.setText(R.id.tvCurrentPrice, itemData.nowBidPrice + " π")
         try {
             val coverImg = itemData.coverImg!!.split(",")
-            Glide.with(mContext!!).load(coverImg[0]).apply(RequestOptions().centerCrop().error(R.mipmap.ic_launcher)
-                    .placeholder(R.mipmap.ic_launcher)).into(helper.getView<ImageView>(R.id.ivProductLogo))
+            Glide.with(mContext!!).load(getUrl(coverImg[0])).apply(RequestOptions().centerCrop().error(R.mipmap.ic_launcher)
+                    .placeholder(R.mipmap.ic_launcher)).into(helper.getView(R.id.ivProductLogo))
         } catch (e: Exception) {
+        }
+    }
+
+    private fun getUrl(imgeUrl: String): String {
+        if (imgeUrl.startsWith("http://") || imgeUrl.startsWith("https://")) {
+            return imgeUrl
+        } else {
+            return "http://ofydu65mj.bkt.clouddn.com/" + imgeUrl
         }
     }
 
