@@ -11,6 +11,7 @@ import com.first.kotlin.R
 import com.first.kotlin.base.BaseActivity
 import com.first.kotlin.util.Constant
 import com.first.kotlin.view.CommonDialog
+import com.first.kotlin.view.CustomTitleBar
 import kotlinx.android.synthetic.main.activity_add_infinite_product.*
 import permissions.dispatcher.*
 import java.io.File
@@ -22,7 +23,7 @@ import java.util.*
  * @description 新增无限竞派商品
  */
 @RuntimePermissions
-class AddInfiniteProductActivity : BaseActivity() {
+class AddInfiniteProductActivity : BaseActivity(),CustomTitleBar.TitleBarListener{
 
     companion object {
         var ADD_PHOTO_ITEM = 1 //添加图片
@@ -35,7 +36,7 @@ class AddInfiniteProductActivity : BaseActivity() {
 
     override fun initView() {
         initPhotoLayout()
-
+        titleBar.setTitleBarListener(this)
     }
 
     private fun initPhotoLayout() {
@@ -61,6 +62,7 @@ class AddInfiniteProductActivity : BaseActivity() {
             override fun onClickDeleteNinePhotoItem(sortableNinePhotoLayout: BGASortableNinePhotoLayout?, view: View?, position: Int, model: String?, models: ArrayList<String>?) {
                 photoLayout.removeItem(position)
             }
+
 
         })
     }
@@ -136,6 +138,14 @@ class AddInfiniteProductActivity : BaseActivity() {
         if(requestCode == ADD_PHOTO_ITEM && resultCode == Activity.RESULT_OK){
             photoLayout.addMoreData(BGAPhotoPickerActivity.getSelectedPhotos(data!!))
         }
+    }
+
+    override fun onLeftClick() {
+        finish()
+    }
+
+    override fun onRightClick() {
+
     }
 
 }
