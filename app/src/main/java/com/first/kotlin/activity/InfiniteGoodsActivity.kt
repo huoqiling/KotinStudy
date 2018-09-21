@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
+import android.view.View
+import butterknife.OnClick
 import com.first.kotlin.R
 import com.first.kotlin.base.BaseActivity
 import com.first.kotlin.fragment.InfiniteGoodFragment
@@ -12,7 +14,6 @@ import com.first.kotlin.view.CustomTitleBar
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
 import kotlinx.android.synthetic.main.activity_infinite_goods.*
-import kotlinx.android.synthetic.main.activity_infinite_goods.view.*
 
 /**
  * @author zhangxin
@@ -88,6 +89,19 @@ class InfiniteGoodsActivity : BaseActivity(), CustomTitleBar.TitleBarListener {
             }
 
         })
+    }
+
+
+
+
+
+    @OnClick(R.id.btnAddInfinite)
+    fun onclick(view: View) {
+        when (view.id) {
+            R.id.btnAddInfinite -> {
+                jumpActivity(AddInfiniteProductActivity().javaClass)
+            }
+        }
     }
 
     override fun onLeftClick() {

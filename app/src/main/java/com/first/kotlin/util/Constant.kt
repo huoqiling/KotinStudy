@@ -1,5 +1,7 @@
 package com.first.kotlin.util
 
+import android.os.Environment
+
 
 /**
  * @author zhangxin
@@ -15,5 +17,6 @@ interface Constant {
         var USER_NAME = "userName"
         var COOKIES = "cookie"
         var NEED_SAVE_COOKIE = "needSaveCookie"
+        var SD_PATH = Environment.getExternalStorageDirectory().absolutePath+"/KotlinImage/"
     }
 }

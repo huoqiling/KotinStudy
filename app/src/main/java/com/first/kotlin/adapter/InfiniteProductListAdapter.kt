@@ -1,7 +1,6 @@
 package com.first.kotlin.adapter
 
 import android.annotation.SuppressLint
-import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.chad.library.adapter.base.BaseQuickAdapter
