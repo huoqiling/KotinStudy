@@ -112,7 +112,7 @@ abstract class BaseActivity : AppCompatActivity() {
     /**
      * Activity调转
      */
-    open fun jumpActivity(clazz: Class<Any>) {
+    open fun jumpActivity(clazz: Class<*>) {
         val intent = Intent()
         intent.setClass(this, clazz)
         startActivity(intent)

@@ -9,4 +9,18 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+
+    <style name="lineStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/gray_d8d8d8</item>
+    </style>
+
+    <style name="lineMarginStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:background">@color/gray_d8d8d8</item>
+    </style>
 </resources>

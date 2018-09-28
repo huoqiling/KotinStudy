@@ -11,7 +11,7 @@ import com.first.kotlin.adapter.InfiniteProductListAdapter
 import com.first.kotlin.base.BaseLazyFragment
 import com.first.kotlin.base.BaseRefreshLayout
 import com.first.kotlin.bean.MerchantQueryProductList
-import com.first.kotlin.net.Requester
+import com.first.kotlin.net.retrofit.Requester
 import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
 import retrofit2.Response

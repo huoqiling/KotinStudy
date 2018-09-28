@@ -1,4 +1,4 @@
-package com.first.kotlin.net
+package com.first.kotlin.net.retrofit
 
 import android.annotation.SuppressLint
 import android.util.Log

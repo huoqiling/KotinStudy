@@ -18,5 +18,7 @@ interface Constant {
         var COOKIES = "cookie"
         var NEED_SAVE_COOKIE = "needSaveCookie"
         var SD_PATH = Environment.getExternalStorageDirectory().absolutePath+"/KotlinImage/"
+        var IS_PAI_LOGIN = "isPaiLogin"
+        var IS_LOGIN_REQUEST = "isLoginRequest"//是否是登录请求
     }
 }

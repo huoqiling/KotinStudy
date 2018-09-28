@@ -1,4 +1,4 @@
-package com.first.kotlin.net
+package com.first.kotlin.net.retrofit
 
 import com.first.kotlin.bean.BaseEntity
 import com.first.kotlin.bean.GlobalParamInfo

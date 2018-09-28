@@ -1,4 +1,4 @@
-package com.first.kotlin.net
+package com.first.kotlin.net.retrofit
 
 import com.first.kotlin.util.Constant
 import com.first.kotlin.util.LogUtil

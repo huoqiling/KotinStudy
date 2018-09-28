@@ -91,7 +91,7 @@ class AddInfiniteProductActivity : BaseActivity(),CustomTitleBar.TitleBarListene
      */
     @OnNeverAskAgain(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
     fun getStorageNeverAskAgain() {
-        showToast("存储权限被拒绝切不再提示")
+        showToast("存储权限被拒绝且不再提示")
     }
 
     /**

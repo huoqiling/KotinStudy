@@ -68,7 +68,7 @@
             tools:text="商品名称" />
 
         <TextView
-            android:id="@+id/fixCurrentPrice"
+            android:id="@+id/currentPriceExplain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvProductName"
@@ -85,7 +85,7 @@
             android:layout_below="@+id/tvProductName"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:layout_toRightOf="@+id/fixCurrentPrice"
+            android:layout_toRightOf="@+id/currentPriceExplain"
             android:textColor="@color/yellow"
             android:textSize="12sp"
             tools:text="19.25π" />

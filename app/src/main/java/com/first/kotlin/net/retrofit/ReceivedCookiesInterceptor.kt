@@ -1,7 +1,6 @@
-package com.first.kotlin.net
+package com.first.kotlin.net.retrofit
 
 import com.first.kotlin.util.Constant
-import com.first.kotlin.util.LogUtil
 import com.first.kotlin.util.Preference
 import okhttp3.Interceptor
 import okhttp3.Response

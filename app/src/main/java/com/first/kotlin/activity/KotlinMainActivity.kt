@@ -8,7 +8,7 @@ import com.first.kotlin.bean.BaseEntity
 import com.first.kotlin.bean.GlobalParamInfo
 import com.first.kotlin.bean.GridInfo
 import com.first.kotlin.bean.UserInfo
-import com.first.kotlin.net.Requester
+import com.first.kotlin.net.retrofit.Requester
 import com.first.kotlin.util.Constant
 import com.first.kotlin.util.LogUtil
 import com.first.kotlin.util.Preference

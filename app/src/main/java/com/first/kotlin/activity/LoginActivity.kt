@@ -1,13 +1,12 @@
 package com.first.kotlin.activity
 
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import butterknife.OnClick
 import com.first.kotlin.R
 import com.first.kotlin.base.BaseActivity
 import com.first.kotlin.bean.UserInfo
-import com.first.kotlin.net.Requester
+import com.first.kotlin.net.retrofit.Requester
 import com.first.kotlin.util.Constant
 import com.first.kotlin.util.Preference
 import com.first.kotlin.view.CustomTitleBar
@@ -25,6 +24,7 @@ class LoginActivity : BaseActivity(), CustomTitleBar.TitleBarListener {
     private var token by Preference(Constant.TOKEN, "")
     private var userName by Preference(Constant.USER_NAME, "")
     private var needSaveCookie by Preference(Constant.NEED_SAVE_COOKIE, false)
+
 
     override fun getLayoutResId(): Int {
         return R.layout.activity_login

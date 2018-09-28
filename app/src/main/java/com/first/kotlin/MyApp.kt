@@ -8,8 +8,16 @@ import android.support.multidex.MultiDex
 import android.support.v7.app.AppCompatActivity
 import android.util.DisplayMetrics
 import android.view.WindowManager
+import com.first.kotlin.util.LoggerInterceptor
 import com.first.kotlin.util.NotNullSingleValueVar
+import com.lzy.okgo.OkGo
+import com.lzy.okgo.cache.CacheMode
+import com.lzy.okgo.cookie.CookieJarImpl
+import com.lzy.okgo.cookie.store.DBCookieStore
+import com.lzy.okgo.model.HttpHeaders
+import okhttp3.OkHttpClient
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 
 /**
@@ -37,7 +45,34 @@ class MyApp : Application() {
     override fun onCreate() {
         super.onCreate()
         getScreenSize()
+        initOkGo()
         instance = this
+    }
+
+    private fun initOkGo() {
+        val headers = HttpHeaders()
+        headers.put("Charset", "UTF-8")
+        headers.put("Connection", "Keep-Alive")
+        headers.put("Content-Type", "application/x-www-form-urlencoded")
+
+        val builder = OkHttpClient.Builder()
+        val loggingInterceptor = LoggerInterceptor("OkGo",BuildConfig.DEBUG)
+//        loggingInterceptor.setColorLevel(Level.INFO)//log颜色级别，决定了log在控制台显示的颜色
+//        loggingInterceptor.setPrintLevel(HttpLoggingInterceptor.Level.BODY) //log打印级别，决定了log显示的详细程度
+        builder.addInterceptor(loggingInterceptor)
+        builder.readTimeout(20, TimeUnit.SECONDS)
+        builder.writeTimeout(20, TimeUnit.SECONDS)
+        builder.connectTimeout(15, TimeUnit.SECONDS)
+        builder.cookieJar(CookieJarImpl(DBCookieStore(this)))
+
+        OkGo.getInstance()
+                .init(this)
+                .setOkHttpClient(builder.build())
+                .setCacheMode(CacheMode.NO_CACHE)
+                .setRetryCount(0)
+                .addCommonHeaders(headers)
+
+
     }
 
     /**

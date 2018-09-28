@@ -1,4 +1,4 @@
-package com.first.kotlin.net
+package com.first.kotlin.net.retrofit
 
 /**
  * url公共类

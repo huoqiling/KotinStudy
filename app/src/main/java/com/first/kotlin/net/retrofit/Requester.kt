@@ -1,4 +1,4 @@
-package com.first.kotlin.net
+package com.first.kotlin.net.retrofit
 
 import android.text.TextUtils
 import com.first.kotlin.MyApp
@@ -17,7 +17,6 @@ import java.util.concurrent.TimeUnit
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
-import com.franmontiel.persistentcookiejar.ClearableCookieJar
 import com.google.gson.GsonBuilder
 
 
