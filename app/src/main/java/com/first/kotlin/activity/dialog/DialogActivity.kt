@@ -1,4 +1,4 @@
-package com.first.kotlin.activity
+package com.first.kotlin.activity.dialog
 
 import android.view.View
 import android.widget.TextView
@@ -8,6 +8,7 @@ import com.first.kotlin.R
 import com.first.kotlin.base.BaseActivity
 import com.first.kotlin.view.CustomDialog
 import com.first.kotlin.view.CustomTitleBar
+import com.first.kotlin.view.ShareDialog
 import kotlinx.android.synthetic.main.activity_dialog.*
 
 class DialogActivity : BaseActivity(), CustomTitleBar.TitleBarListener {
@@ -23,12 +24,16 @@ class DialogActivity : BaseActivity(), CustomTitleBar.TitleBarListener {
         titleBar.setTitleBarListener(this)
     }
 
-    @OnClick(R.id.btnShowDialog)
+    @OnClick(R.id.btnShowDialog,R.id.btnShareDialog)
     fun onClick(view: View) {
-        when(view.id){
-            R.id.btnShowDialog->{
+        when (view.id) {
+            R.id.btnShowDialog -> {
                 val dialog = CustomDialog()
                 dialog.show(supportFragmentManager, "弹窗")
+            }
+            R.id.btnShareDialog -> {
+                val dialog = ShareDialog()
+                dialog.show(supportFragmentManager, "分享弹窗")
             }
         }
     }

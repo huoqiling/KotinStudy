@@ -2,6 +2,7 @@ package com.first.kotlin.activity
 
 import android.support.v7.widget.LinearLayoutManager
 import com.first.kotlin.R
+import com.first.kotlin.activity.dialog.DialogActivity
 import com.first.kotlin.activity.pai.PaiLoginActivity
 import com.first.kotlin.activity.pai.PaiMainActivity
 import com.first.kotlin.adapter.MainAdapter
@@ -12,10 +13,13 @@ import com.first.kotlin.util.Preference
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
-
 /**
- * 首页
- */
+ *
+ @desc  首页
+ @date 2018/10/11
+ @author zhangxin
+ *
+ **/
 class MainActivity : BaseActivity() {
 
     private var isLogin: Boolean by Preference(Constant.IS_LOGIN, false)

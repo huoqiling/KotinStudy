@@ -5,6 +5,8 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="white">#ffffff</color>
+    <color name="white_33">#33ffffff</color>
+    <color name="black_2e2c37">#2e2c37</color>
     <color name="black">#1a1a1a</color>
     <color name="gray_d8d8d8">#d8d8d8</color>
     <color name="gray_fff5f6">#fff5f6</color>
@@ -12,4 +14,5 @@
     <color name="yellow">#ffba14</color>
     <color name="green">#30cb49</color>
     <color name="transparent">#00000000</color>
+    <color name="black_17161f">#17161f</color>
 </resources>

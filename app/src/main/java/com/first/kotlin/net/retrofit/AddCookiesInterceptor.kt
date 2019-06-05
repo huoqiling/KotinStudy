@@ -21,7 +21,7 @@ class AddCookiesInterceptor : Interceptor {
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         val builder = chain.request().newBuilder()
-        Observable.just(cookies)
+        Observable.just(this.cookies)
                 .subscribe({ cookie ->
                     //添加cookie
                     if (!needSaveCookie) {

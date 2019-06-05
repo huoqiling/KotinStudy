@@ -34,7 +34,7 @@
 
         <!-- dialog -->
         <activity
-            android:name=".activity.DialogActivity"
+            android:name=".activity.dialog.DialogActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
 

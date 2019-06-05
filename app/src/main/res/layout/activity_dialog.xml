@@ -22,4 +22,15 @@
         android:background="@color/colorAccent"
         android:textSize="15sp"
         android:text="显示弹窗"/>
+
+    <TextView
+        android:id="@+id/btnShareDialog"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="15dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        android:textSize="15sp"
+        android:text="显示分享弹窗"/>
 </LinearLayout>

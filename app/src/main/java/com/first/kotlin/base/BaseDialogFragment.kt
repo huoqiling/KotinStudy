@@ -84,4 +84,5 @@ abstract class BaseDialogFragment : AppCompatDialogFragment() {
         Toast.makeText(context, str!!, Toast.LENGTH_LONG).show()
     }
 
+
 }
